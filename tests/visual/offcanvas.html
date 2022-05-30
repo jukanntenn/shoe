@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./visual.css" rel="stylesheet" />
+    <title>Offcanvas</title>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <h1>Offcanvas <small>B00 Visual Test</small></h1>
+      <div>
+        <button
+          id="trigger1"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm"
+        >
+          toggle left offcanvas with button
+        </button>
+        <button
+          id="trigger2"
+          class="bg-green-500 text-white px-4 py-2 rounded-md text-sm"
+        >
+          toggle right offcanvas with button
+        </button>
+      </div>
+      <div>
+        <a href="#" id="trigger3" class="text-blue-500"
+          >toggle left offcanvas with link</a
+        >
+        <a href="#" id="trigger4" class="text-blue-500"
+          >toggle right offcanvas with link</a
+        >
+      </div>
+      <button
+        id="trigger5"
+        class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm"
+      >
+        offcanvas with long content
+      </button>
+      <div>
+        <div
+          id="offcanvas-1"
+          class="-translate-x-full bg-white fixed inset-0 duration-300 z-50 shadow w-full sm:w-1/3 lg:w-1/4 min-h-screen opacity-100"
+        ></div>
+        <div
+          id="offcanvas-2"
+          class="translate-x-full bg-white fixed inset-y-0 right-0 duration-300 z-50 shadow w-full sm:w-1/3 lg:w-1/4 min-h-screen opacity-100"
+        ></div>
+        <div
+          id="offcanvas-3"
+          class="-translate-x-full bg-white fixed inset-0 duration-300 z-50 shadow w-full sm:w-1/3 lg:w-1/4 min-h-screen opacity-100 overflow-y-scroll"
+        >
+          <ul class="p-5">
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+            <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../dist/index.js"></script>
+    <script>
+      (function () {
+        const elem = document.getElementById("offcanvas-1");
+        const offcanvas = new shoe.Offcanvas(elem, {
+          backdropClassName:
+            "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
+        });
+        const trigger1 = document.getElementById("trigger1");
+        const trigger3 = document.getElementById("trigger3");
+        trigger1.addEventListener("click", function () {
+          offcanvas.toggle();
+        });
+        trigger3.addEventListener("click", function () {
+          offcanvas.toggle();
+        });
+      })();
+
+      (function () {
+        const elem = document.getElementById("offcanvas-2");
+        const offcanvas = new shoe.Offcanvas(elem, {
+          backdropClassName:
+            "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
+        });
+        const trigger2 = document.getElementById("trigger2");
+        const trigger4 = document.getElementById("trigger4");
+        trigger2.addEventListener("click", function () {
+          offcanvas.toggle();
+        });
+        trigger4.addEventListener("click", function () {
+          offcanvas.toggle();
+        });
+      })();
+
+      (function () {
+        const elem = document.getElementById("offcanvas-3");
+        const offcanvas = new shoe.Offcanvas(elem, {
+          backdropClassName:
+            "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
+        });
+        const trigger5 = document.getElementById("trigger5");
+        trigger5.addEventListener("click", function () {
+          offcanvas.toggle();
+        });
+      })();
+    </script>
+  </body>
+</html>

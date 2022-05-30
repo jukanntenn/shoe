@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div>
+  <div class="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8">
+    <aside
+      id="sidebar"
+      class="-translate-x-full bg-white dark:bg-slate-800 duration-300 opacity-100 top-0 lg:bg-transparent lg:dark:bg-transparent lg:block lg:transform-none fixed z-[200] inset-0 lg:top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto"
+    >
+      {{ partial "sidebar" . }}
+    </aside>
+    <div class="lg:pl-[19.5rem]">
+      <main
+        class="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16"
+      >
+        <!-- Main content -->
+        <div
+          class="relative prose prose-slate max-w-none dark:prose-invert mb-10"
+        >
+          <header class="relative">
+            <div class="flex items-center">
+              <h1
+                class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"
+              >
+                {{ .Title | markdownify }}
+              </h1>
+            </div>
+            <p class="mt-2 text-lg text-slate-700 dark:text-slate-400">
+              {{ .Page.Params.Description | markdownify }}
+            </p>
+          </header>
+
+          {{ .Content }}
+        </div>
+        <!-- Table of content -->
+        <div
+          class="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[19.5rem] py-10 px-8 overflow-y-auto hidden xl:block"
+        >
+          {{ if (eq .Page.Params.toc true) }}
+          <div
+            class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) pb-6"
+          >
+            <div class="mb-8">
+              <h5
+                class="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100"
+              >
+                On this page
+              </h5>
+              {{ .TableOfContents }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{{ end }}

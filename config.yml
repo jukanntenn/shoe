@@ -1,0 +1,41 @@
+languageCode: "en"
+title: "Shoe"
+baseURL: ""
+
+security:
+  enableInlineShortcodes: true
+  funcs:
+    getenv:
+      - ^HUGO_
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+  tableOfContents:
+    startLevel: 2
+    endLevel: 6
+
+buildDrafts: true
+buildFuture: true
+
+enableRobotsTXT: true
+metaDataFormat: "yaml"
+disableKinds: ["404", "taxonomy", "term", "RSS"]
+
+publishDir: "_site"
+
+module:
+  mounts:
+    - source: dist
+      target: static/docs/dist
+    - source: site/static
+      target: static
+    - source: site/content
+      target: content
+    - source: site/layouts
+      target: layouts
+    - source: site/data
+      target: data

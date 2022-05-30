@@ -1,0 +1,6 @@
+<!-- prettier-ignore -->
+{{- $lang := .Get "lang" | default "html" -}}
+{{- $input := .Inner -}}
+
+<div>{{- $input -}}</div>
+<div class="">{{- highlight (trim $input "\n") $lang "" -}}</div>

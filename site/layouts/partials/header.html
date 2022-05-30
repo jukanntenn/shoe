@@ -1,0 +1,53 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+{{ partial "stylesheet" . }}
+
+<script>
+  const themeConfig = {
+    light: {
+      selector: "themeCase-1",
+      defaultClassName: [
+        "stroke-slate-400 dark:stroke-slate-500",
+        "stroke-slate-400 dark:stroke-slate-500",
+      ],
+      activeClassName: ["fill-sky-400/20 stroke-sky-500", "stroke-sky-500"],
+    },
+    dark: {
+      selector: "themeCase-2",
+      defaultClassName: [
+        "fill-transparent",
+        "fill-slate-400 dark:fill-slate-500",
+        "fill-slate-400 dark:fill-slate-500",
+      ],
+      activeClassName: ["fill-sky-400/20", "fill-sky-500", "fill-sky-500"],
+    },
+    system: {
+      selector: "themeCase-3",
+      defaultClassName: [
+        "stroke-slate-400 dark:stroke-slate-500",
+        "stroke-slate-400 dark:stroke-slate-500",
+      ],
+      activeClassName: ["stroke-sky-500 fill-sky-400/20", "stroke-sky-500"],
+    },
+  };
+
+  const useTheme = (theme) => {
+    if (
+      theme === "dark" ||
+      (theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+  let currTheme;
+  if (!("theme" in localStorage)) {
+    currTheme = "system";
+  } else {
+    currTheme = localStorage.theme;
+  }
+  useTheme(currTheme);
+</script>

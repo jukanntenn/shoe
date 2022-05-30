@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- prettier-ignore -->
+<html lang="en" class="[--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem] js-focus-visible">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  {{ block "body_override" . }}<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">{{ end }}
+    {{ .Content }}
+    {{ if ne .Page.Params.include_js false -}}
+      {{ range .Page.Params.extra_js -}}
+        <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} {{ printf "integrity=%q" . | safeHTMLAttr }} crossorigin="anonymous"{{ end }}></script>
+      {{- end -}}
+    {{- end }}
+  </body>
+</html>

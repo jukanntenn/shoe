@@ -1,0 +1,55 @@
+<!-- prettier-ignore -->
+<nav class="lg:text-sm lg:leading-6 relative">
+  {{- $url := split .Permalink "/" -}} {{- $page_slug := index $url (sub (len
+    $url) 2) -}}
+
+    <ul class="mb-0 list-unstyled">
+      {{- range $group := .Site.Data.sidebar -}} {{- $link := $group.title -}}
+      {{- $link_slug := $link | urlize -}} {{- if $group.pages -}} {{- $link =
+      index $group.pages 0 -}} {{- $link_slug = $link.title | urlize -}} {{- end
+      -}} {{- $group_slug := $group.title | urlize -}} {{- $is_active_group :=
+      eq $.Page.Params.group $group_slug -}} {{- if $group.pages }}
+      <li class="mt-8">
+        <h5
+          class="mb-8 lg:mb-3 font-semibold text-slate-900 dark:text-slate-200"
+        >
+          {{ $group.title }}
+        </h5>
+        <ul
+          class="space-y-6 lg:space-y-2 border-l border-slate-100 dark:border-slate-800"
+        >
+          {{- range $doc := $group.pages -}} {{- $doc_slug := $doc.title |
+          urlize -}} {{- $is_active := and $is_active_group (eq $page_slug
+          $doc_slug) -}} {{- $href := printf "/docs/%s/%s/" $group_slug
+          $doc_slug }}
+          <li>
+            <a
+              href="{{ $href }}"
+              class="block border-l pl-4 -ml-px {{ if $is_active }}text-sky-500 border-current font-semibold dark:text-sky-400{{ else }}border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300{{ end }}"
+              >{{ $doc.title }}</a
+            >
+          </li>
+          {{- end }}
+        </ul>
+      </li>
+      {{- else }}
+      <li class="my-3 mx-4 border-top"></li>
+      <li>
+        <a
+          href="/{{ $group_slug }}/"
+          class="d-inline-flex align-items-center {{ if $is_active_group }} active{{ end }}"
+          {{
+          if
+          $is_active_group
+          }}
+          aria-current="page"
+          {{
+          end
+          }}
+        >
+          {{ $group.title }}
+        </a>
+      </li>
+      {{- end }} {{- end }}
+    </ul>
+</nav>

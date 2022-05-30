@@ -1,0 +1,9 @@
+- title: Getting started
+  pages:
+    - title: Installation
+    - title: Browser support
+- title: Components
+  pages:
+    - title: Offcanvas
+    - title: Scrollspy
+    - title: Dropdown

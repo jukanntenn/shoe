@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!-- prettier-ignore -->
+<html lang="en" class="[--scroll-mt:9.875rem] lg:[--scroll-mt:6.3125rem] js-focus-visible">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  {{ block "body_override" . }}<body class="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">{{ end }}
+    {{ partial "navbar" }}
+    {{ block "main" . }}
+    {{ end }}
+    {{ partial "scripts" . }}
+  </body>
+</html>
